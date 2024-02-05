@@ -3,6 +3,8 @@
 Module for testing client functions
 """
 import unittest
+from urllib import response
+from unittest import mock
 from unittest.mock import patch, PropertyMock
 from parameterized import parameterized, parameterized_class
 from client import GithubOrgClient
