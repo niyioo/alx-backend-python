@@ -72,10 +72,8 @@ class TestMemoize(unittest.TestCase):
         """
         Test the memoization behavior
         """
-        # Create an instance of TestClass
-        test_instance = self.TestClass()
 
-        class test_instance:
+        class TestClass:
             """
             Test class for memoization
             """
@@ -94,10 +92,11 @@ class TestMemoize(unittest.TestCase):
                 return self.a_method()
 
         # Patch the a_method to ensure it won't be called during the test
-        with patch.object(test_instance, 'a_method') as mock_a_method:
+        with patch.object(TestClass, 'a_method') as mock_a_method:
+            result = TestClass()
             # Call a_property twice
-            test_instance.a_property
-            test_instance.a_property
+            result.a_property
+            result.a_property
 
             # Assert that a_method is only called once
             mock_a_method.assert_called_once()
