@@ -68,31 +68,30 @@ class TestMemoize(unittest.TestCase):
     """
     Test suite for utils.memoize decorator
     """
-
-    class TestClass:
-        """
-        Test class for memoization
-        """
-
-        def a_method(self):
-            """
-            A simple method
-            """
-            return 42
-
-        @memoize
-        def a_property(self):
-            """
-            A memoized property using memoize decorator
-            """
-            return self.a_method()
-
     def test_memoize(self):
         """
         Test the memoization behavior
         """
         # Create an instance of TestClass
         test_instance = self.TestClass()
+
+        class test_instance:
+            """
+            Test class for memoization
+            """
+
+            def a_method(self):
+                """
+                A simple method
+                """
+                return 42
+
+            @memoize
+            def a_property(self):
+                """
+                A memoized property using memoize decorator
+                """
+                return self.a_method()
 
         # Patch the a_method to ensure it won't be called during the test
         with patch.object(test_instance, 'a_method') as mock_a_method:
