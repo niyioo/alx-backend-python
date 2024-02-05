@@ -41,7 +41,6 @@ class TestGetJson(unittest.TestCase):
     Test suite for utils.get_json
     """
 
-    @patch('requests.get')
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False}),
