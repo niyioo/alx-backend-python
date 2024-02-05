@@ -28,7 +28,8 @@ class TestAccessNestedMap(unittest.TestCase):
         ({}, ("a",), KeyError, "Key 'a' not found in nested map"),
         ({"a": 1}, ("a", "b"), KeyError, "Key 'b' not found in nested map"),
     ])
-    def test_access_nested_map_exception(self, nested_map, path, expected_exception, expected_message):
+    def test_access_nested_map_exception(
+            self, nested_map, path, expected_exception, expected_message):
         """
         Test utils.access_nested_map raises KeyError with expected message
         """
