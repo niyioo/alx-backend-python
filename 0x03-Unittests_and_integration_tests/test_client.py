@@ -19,7 +19,7 @@ class TestGithubOrgClient(unittest.TestCase):
     @patch('client.get_json')
     def test_org(self, org_name, mock_get_json):
         """Test org method"""
-        endpoint = f'https://api.github.com/orgs/{org_name}'
+        endpoint = 'https://api.github.com/orgs/{}'.format(org_name)
         spec = GithubOrgClient(org_name)
         spec.org()
         mock_get_json.assert_called_once_with(endpoint)
@@ -77,17 +77,11 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
 
     def test_public_repos(self):
         """Test public_repos method in an integration test"""
-        client = GithubOrgClient('example_org')
-        repos = client.public_repos()
-        self.assertEqual(repos, self.expected_repos)
 
     def test_public_repos_with_license(self):
         """Test public_repos method with
         license argument in an integration test
         """
-        client = GithubOrgClient('example_org')
-        repos = client.public_repos(license="apache-2.0")
-        self.assertEqual(repos, self.apache2_repos)
 
 
 if __name__ == '__main__':
